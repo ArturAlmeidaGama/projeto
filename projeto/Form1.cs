@@ -25,7 +25,7 @@ namespace projeto
 
         private void CarregarDadosBanco()
         {
-            string conexao = "server=localhost;database=projeto2;uid=root;pwd=etec";
+            string conexao = "server=localhost;database=projeto2;uid=root;pwd=";
             MySqlConnection conexaoMYSQL = new MySqlConnection(conexao);
             conexaoMYSQL.Open();
             MySqlDataAdapter adapter = new MySqlDataAdapter("select * from aluno", conexaoMYSQL);
@@ -44,17 +44,28 @@ namespace projeto
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
-            string conexao = "server=localhost;database=projeto2;uid=root;pwd=etec";
-            MySqlConnection conexaoMYSQL = new MySqlConnection(conexao);
-            conexaoMYSQL.Open();
-            MySqlCommand comando = new MySqlCommand("update aluno set nome='" + txtNome.Text + "', ds='" + txtDs.Text + "' where id=" + txtId.Text, conexaoMYSQL);
-            comando.ExecuteNonQuery();
-            MessageBox.Show("Dados alterados!!!");
-            txtNome.Text = "";
-            txtDs.Text = "";
-            txtId.Text = "";
-            pnlEspaco.Visible = false;
-            CarregarDadosBanco();
+            if (txtNome.Text == "" || txtDs.Text == "")
+            {
+                MessageBox.Show("Todos os campos devem ser preenchidos");
+            }
+            else if (int.TryParse(txtNome.Text, out _) == true || float.TryParse(txtNome.Text, out _) == true || float.TryParse(txtDs.Text, out _) == true)
+            {
+                MessageBox.Show("Um ou mais campo estão incorretos!");
+            }
+            else
+            {
+                string conexao = "server=localhost;database=projeto2;uid=root;pwd=";
+                MySqlConnection conexaoMYSQL = new MySqlConnection(conexao);
+                conexaoMYSQL.Open();
+                MySqlCommand comando = new MySqlCommand("update aluno set nome='" + txtNome.Text + "', ds='" + txtDs.Text + "' where id=" + txtId.Text, conexaoMYSQL);
+                comando.ExecuteNonQuery();
+                MessageBox.Show("Dados alterados!!!");
+                txtNome.Text = "";
+                txtDs.Text = "";
+                txtId.Text = "";
+                pnlEspaco.Visible = false;
+                CarregarDadosBanco();
+            }
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
