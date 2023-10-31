@@ -56,5 +56,25 @@ namespace projeto
             pnlEspaco.Visible = false;
             CarregarDadosBanco();
         }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            DialogResult caixaMensagem = MessageBox.Show("Deseja realmente exluir esse aluno?", "Etec Taboão da Serra", MessageBoxButtons.YesNo);
+
+            if (caixaMensagem == DialogResult.Yes)
+            {
+                string conexao = "server=localhost;database=projeto2;uid=root;pwd=etec";
+                MySqlConnection conexaoMYSQL = new MySqlConnection(conexao);
+                conexaoMYSQL.Open();
+                MySqlCommand comando = new MySqlCommand("delete from aluno where id=" + txtId.Text + ";", conexaoMYSQL);
+                comando.ExecuteNonQuery();
+                MessageBox.Show("Dado excluído com sucesso!");
+                txtNome.Text = "";
+                txtDs.Text = "";
+                txtId.Text = "";
+                pnlEspaco.Visible = false;
+                CarregarDadosBanco();
+            }
+        }
     }
 }

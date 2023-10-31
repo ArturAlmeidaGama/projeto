@@ -38,12 +38,14 @@ namespace projeto
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvAluno = new System.Windows.Forms.DataGridView();
+            this.btnExcluir = new System.Windows.Forms.Button();
             this.pnlEspaco.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAluno)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlEspaco
             // 
+            this.pnlEspaco.Controls.Add(this.btnExcluir);
             this.pnlEspaco.Controls.Add(this.txtDs);
             this.pnlEspaco.Controls.Add(this.txtNome);
             this.pnlEspaco.Controls.Add(this.txtId);
@@ -53,7 +55,7 @@ namespace projeto
             this.pnlEspaco.Controls.Add(this.label1);
             this.pnlEspaco.Location = new System.Drawing.Point(12, 202);
             this.pnlEspaco.Name = "pnlEspaco";
-            this.pnlEspaco.Size = new System.Drawing.Size(323, 154);
+            this.pnlEspaco.Size = new System.Drawing.Size(323, 179);
             this.pnlEspaco.TabIndex = 5;
             this.pnlEspaco.Visible = false;
             // 
@@ -126,11 +128,21 @@ namespace projeto
             this.dgvAluno.TabIndex = 4;
             this.dgvAluno.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvAluno_CellMouseDoubleClick);
             // 
+            // btnExcluir
+            // 
+            this.btnExcluir.Location = new System.Drawing.Point(121, 147);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(75, 23);
+            this.btnExcluir.TabIndex = 7;
+            this.btnExcluir.Text = "Excluir";
+            this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(348, 366);
+            this.ClientSize = new System.Drawing.Size(348, 434);
             this.Controls.Add(this.pnlEspaco);
             this.Controls.Add(this.dgvAluno);
             this.Name = "Form1";
@@ -154,6 +166,7 @@ namespace projeto
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvAluno;
+        private System.Windows.Forms.Button btnExcluir;
     }
 }
 
